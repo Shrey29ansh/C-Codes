@@ -1,0 +1,102 @@
+#include<iostream>
+using namespace std;
+int A[10];
+class hash
+{
+	public:
+		
+	void insert()
+	{
+	int key,sap,sum=0,s2=0,i=0,y;
+	cout<<"ENTER SAP ID";
+	cin>>sap;
+	y=sap;
+	while(i<3)
+	{
+		sum=sum+sap%10;
+		sap=sap/10;
+		i++;
+	}
+	if(sum>=10)
+	{
+		s2=s2+sum%10;
+		sum=sum/10;
+		s2=s2+sum;
+		key=s2;
+	}
+	else
+	{
+		key=sum;
+	}
+	if(A[key]!=-1)
+	{
+		A[key+1]=y;
+		cout<<"your key is="<<key+1;
+	}
+	else
+	{
+		A[key]=y;
+		cout<<"your key is="<<key;
+	}	
+	}
+		void search()
+	{
+	int i;
+	cout<<"enter the key value";
+	cin>>i;
+	if(i>=10)
+	{
+		cout<<"entered key is wrong";
+	}
+	else
+	cout<<"your sap is"<<A[i];
+	}
+	void del()
+	{
+	int i;
+	cout<<"enter the key you want to delete";
+	cin>>i;
+	if(i>=10)
+	{
+		cout<<"entered key is wrong";
+	}
+
+	else
+	{
+		A[i]=-1;
+	}
+	}	
+};
+int main()
+{	
+	hash obj;
+	int i,k;
+	for(k=0;k<10;k++)
+	{
+	A[k]=-1;
+	}
+	while(1)
+	{
+	cout<<"press 1 for inserting\n";
+	cout<<"press 2 for searching\n";
+	cout<<"press 3 for deleting\n";
+	cout<<"press 4 for exiting\n";
+	cin>>i;
+
+switch(i)
+{
+	case 1:
+		obj.insert();
+		break;
+	case 2:
+		obj.search();
+		break;
+	case 3:
+		obj.del();
+		break;
+	case 4:
+		exit(0);
+}
+}
+return 0;
+}
